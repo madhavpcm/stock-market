@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Buy from 'components/common/Buy'
 
 export default function Home() {
 	const { data: session } = useSession()
@@ -25,9 +26,7 @@ export default function Home() {
 
 			{session && (
 				<>
-					{console.log(session.user)}
-					<h4>You are logged as: {session.user.email}</h4>
-					<br />
+					<Buy />
 					<button onClick={() => signOut()}>Sign out</button>
 				</>
 			)}
