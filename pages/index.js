@@ -1,6 +1,14 @@
 import Head from 'next/head'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function Home() {
+	const { data: session } = useSession()
+
+	// const { session, loadingSession } = useSession()
+
+	// if (loadingSession) {
+	// 	return <p>Loading...</p>
+	// }
 	return (
 		<>
 			<Head>
@@ -9,9 +17,20 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div>
-				<h1 className=' font-bold text-6xl'>Hello Next.js</h1>
-			</div>
+			{!session && (
+				<>
+					<button onClick={() => signIn()}>Sign in</button>
+				</>
+			)}
+
+			{session && (
+				<>
+					{console.log(session.user)}
+					<h4>You are logged as: {session.user.email}</h4>
+					<br />
+					<button onClick={() => signOut()}>Sign out</button>
+				</>
+			)}
 		</>
 	)
 }
