@@ -6,9 +6,13 @@ import 'styles/text-styles.css'
 import 'styles/layout.css'
 import 'styles/form.css'
 
+import 'assets/fonts/IBMPlexMono/stylesheet.css'
+import Navbar from 'components/common/Navbar'
+
 function MyApp({ Component, pageProps }) {
 	return (
 		<SessionProvider session={pageProps.session}>
+			<Navbar />
 			<Component {...pageProps} />
 		</SessionProvider>
 	)

@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import Buy from 'components/common/Buy'
+import { useRouter } from 'next/router'
 
 export default function Home() {
 	const { data: session } = useSession()
-
+	const router = useRouter()
 	// const { session, loadingSession } = useSession()
 
 	// if (loadingSession) {
@@ -26,8 +26,8 @@ export default function Home() {
 
 			{session && (
 				<>
-					<Buy />
 					<button onClick={() => signOut()}>Sign out</button>
+					{router.push('/customer')}
 				</>
 			)}
 		</>

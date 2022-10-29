@@ -1,0 +1,38 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	align-items: center;
+	justify-content: center;
+	padding: 50px 100px;
+	margin: 0 auto;
+}
+
+.container h1 {
+	font-size: 100px;
+	font-weight: bolder;
+}
+
+.table {
+	font-size: 18px;
+}
+
+.table-heading,
+.table-row td {
+	padding: 16px 24px;
+	text-align: left;
+}
+
+.table-heading th {
+	background-color: var(--gold);
+	color: #fff;
+	width: 25%;
+}
+
+.table-body tr:nth-child(even) {
+	background-color: #f8f9fa;
+}
+
+.table-body tr:nth-child(odd) {
+	background-color: #e9ecef;
+}

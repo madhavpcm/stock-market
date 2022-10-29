@@ -1,0 +1,32 @@
+.container {
+	display: flex;
+	padding: 14px 20px;
+	background-color: var(--blue);
+	color: var(--white);
+	align-items: center;
+	justify-content: space-between;
+}
+
+.left-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.left-wrapper img {
+	height: 30px;
+}
+
+.sign-out {
+	border: 1px solid white;
+	border-radius: 20px;
+	padding: 4px 14px;
+	cursor: pointer;
+}
+
+.btn-wrapper {
+	display: flex;
+	gap: 50px;
+}
