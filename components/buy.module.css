@@ -50,14 +50,87 @@
 	background-color: var(--drop-down);
 }
 
+.stock-bottom-left {
+	display: flex;
+	align-items: center;
+	gap: 70px;
+}
+
 .stock-bottom-wrapper {
+	display: flex;
 	height: 0;
 	overflow: hidden;
-	justify-content: space-between;
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 21px;
 	align-items: center;
+	width: 100%;
+	padding: 0px 25px;
+	justify-content: space-between;
+}
+
+.input-container {
+	display: flex;
+	gap: 10px;
+}
+
+.input-container img {
+	padding-top: 20px;
+	width: 16px;
+	cursor: pointer;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 16px 0px;
+}
+
+.input-wrapper input {
+	background-color: transparent;
+	height: 40px;
+	outline: none;
+	border-bottom: 1px solid var(--grey);
+	width: 190px;
+}
+
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.input-wrapper input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.input-wrapper input::placeholder {
+	color: #4c4d50;
+}
+
+.total-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.total-wrapper span {
+	font-size: 20px;
+	color: var(--grey);
+}
+
+.buy-btn {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	background-color: var(--light-blue);
+	border-radius: 50px;
+	padding: 12px 30px;
+	cursor: pointer;
+}
+
+.buy-btn span {
+	font-size: 18px;
+	margin-bottom: 2px;
 }
 
 .stock-name-wrapper {
