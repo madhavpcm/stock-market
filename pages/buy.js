@@ -77,9 +77,7 @@ export default function BuyPage() {
 									opacity: openFaq == item.tag ? 1 : 0,
 									height: openFaq == item.tag ? 'auto' : 0,
 								}}
-							>
-								sfkaasefmslfak;lk;lk4a;f;1
-							</motion.div>
+							></motion.div>
 						</div>
 					))}
 				</div>
