@@ -1,6 +1,11 @@
 :root {
-	--blue: #0b254c;
-	--gold: #70621a;
-	--black: #030c32;
-	--white: #d6d6d6;
+	--black: #0a0b0d;
+	--white: #ffffff;
+	--green: #29a51e;
+	--red: #ff0000;
+	--grey: #8a919e;
+	--drop-down: #0e0e11;
+	--border: #24262a;
+	--dark-blue: #051537;
+	--light-blue: #457bf0;
 }

@@ -1,38 +1,100 @@
-.container {
+.balance-container {
+	display: flex;
+	height: 188px;
+	border-bottom: 1.5px solid var(--border);
+	padding-left: 40px;
+	align-items: center;
+}
+
+.balance-wrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
+	gap: 4px;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 26px;
+	color: var(--grey);
+}
+
+.money-wrapper {
+	font-weight: 600;
+	font-size: 32px;
+	line-height: 42px;
+	color: var(--white);
+}
+
+.money-wrapper {
+	display: flex;
+	gap: 14px;
+}
+
+.stock-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 58px;
+}
+
+.stock-top-wrapper {
+	display: flex;
+	justify-content: space-between;
+	padding: 18px 26px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 21px;
 	align-items: center;
-	justify-content: center;
-	padding: 50px 100px;
-	margin: 0 auto;
+	cursor: pointer;
 }
 
-.container h1 {
-	font-size: 100px;
-	font-weight: bolder;
+.stock-top-wrapper:hover {
+	background-color: var(--drop-down);
 }
 
-.table {
-	font-size: 18px;
+.stock-bottom-wrapper {
+	height: 0;
+	overflow: hidden;
+	justify-content: space-between;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 21px;
+	align-items: center;
 }
 
-.table-heading,
-.table-row td {
-	padding: 16px 24px;
-	text-align: left;
+.stock-name-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 120px;
 }
 
-.table-heading th {
-	background-color: var(--gold);
-	color: #fff;
-	width: 25%;
+.stock-name-wrapper span {
+	font-size: 14px;
+	line-height: 18px;
+	color: var(--grey);
 }
 
-.table-body tr:nth-child(even) {
-	background-color: #f8f9fa;
+.stock-value {
+	width: 80px;
 }
 
-.table-body tr:nth-child(odd) {
-	background-color: #e9ecef;
+.stock-percentage-wrapper {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	width: 80px;
+}
+
+.stock-percentage-wrapper img {
+	height: 14px;
+}
+
+.stock-percentage-inc {
+	color: var(--green);
+}
+
+.stock-percentage-dec {
+	color: var(--red);
+}
+
+.show .answer {
+	display: inline-block;
 }

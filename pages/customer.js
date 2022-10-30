@@ -5,5 +5,9 @@ import React from 'react'
 import styles from '../components/customer.module.css'
 
 export default function customer() {
-	return <div></div>
+	return (
+		<div>
+			<Navbar />
+		</div>
+	)
 }
