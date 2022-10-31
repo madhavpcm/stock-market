@@ -22,7 +22,8 @@ const fastCsvOptions = {
 const RequestType = {
   GLOBAL_QUOTE: 'GLOBAL_QUOTE',
   TIME_SERIES_DAILY: 'TIME_SERIES_DAILY',
-  TIME_SERIES_INTRADAY: 'TIME_SERIES_INTRADAY'
+  TIME_SERIES_INTRADAY: 'TIME_SERIES_INTRADAY',
+  OVERVIEW: 'OVERVIEW'
 };
 
 const {
@@ -51,6 +52,8 @@ export const globalQuote = symbol =>
 export const fetchTimeSeriesDaily = symbol =>
   `${AlphaVantageUrl}${TIME_SERIES_DAILY}&symbol=${symbol}&apikey=${AV_API_KEY}`;
 
+export const fetchCompanyDetails = symbol =>
+  `${AlphaVantageUrl}${RequestType.OVERVIEW}&symbol=${symbol}&apikey=${AV_API_KEY}`
 
 /**
  * Time Series - Daily
@@ -84,6 +87,35 @@ function initListings() {
     });
 }
 
+function getCompanyDetails(symbol) {
+
+
+  return new Promise((resolve, reject) => {
+    var stockurl = fetchCompanyDetails(symbol);
+    request.get({
+      url: stockurl,
+      json: true,
+      headers: { 'User-Agent': 'request' }
+    }, (err, res, data) => {
+      if (err) {
+        reject(err);
+      } else if (res.statusCode !== 200) {
+        reject(res.statusCode);
+      } else {
+        // data is successfully parsed as a JSON object:
+        var result = {
+          'total_available': '',
+          'market_cap': '',
+        }
+        result['total_available'] = data['SharesOutstanding'];
+        result['market_cap'] = data['MarketCapitalization'];
+        resolve(result);
+        //console.log(result);
+      }
+    });
+  })
+}
+
 function todaysLatest(symbol) {
 
   return new Promise((resolve, reject) => {
@@ -102,9 +134,11 @@ function todaysLatest(symbol) {
         var stockname = '';
 
         var result = {
-          "Name": "",
-          "Symbol": "",
-          "Price": [],
+          "stock_name": "",
+          "stock_tag": "",
+          "curr_time": "",
+          "curr_date": "",
+          "curr_price": [],
         };
         var stockprices = data['Time Series (1min)'];
         var stocki = Object.keys(stockprices)[0];
@@ -113,12 +147,14 @@ function todaysLatest(symbol) {
         var i;
         for (i in listings) {
           if (listings[i][0] == symbol) {
-            result['Name'] = listings[i][1];
+            result['stock_name'] = listings[i][1];
             break;
           }
         }
-        result['Symbol'] = symbol;
-        result['Price'] = stockprices[stocki]['1. open'];
+        result['stock_tag'] = symbol;
+        result['curr_date'] = stocki.split(' ')[0];
+        result['curr_time'] = stocki.split(' ')[1];
+        result['curr_price'] = stockprices[stocki]['1. open'];
         resolve(result);
       }
     });
@@ -143,38 +179,51 @@ function yesterdaysClosing(symbol) {
         var stockname = '';
 
         var result = {
-          "Name": "",
-          "Symbol": "",
-          "Price": [],
+          "stock_name": "",
+          "stock_tag": "",
+          "yest_price": "",
         };
+        result['stock_tag'] = symbol;
         var stockprices = [];
         var j = data['Time Series (Daily)'];
         var k = 0;
         for (var i in j) {
           if (k == 1) {
-            stockprices.push(j[i]['4. close']);
+            result['yest_price'] = (j[i]['4. close']);
             break;
           }
           k = k + 1;
         }
         for (i in listings) {
           if (listings[i][0] == symbol) {
-            result['Name'] = listings[i][1];
+            result['stock_name'] = listings[i][1];
             break;
           }
         }
-        result['Symbol'] = symbol;
-        result['Price'] = stockprices;
         resolve(result);
       }
     });
   })
 }
 
-async function printer() {
-  var per = await yesterdaysClosing('MSFT');
-  console.log(per);
-  var ter = await todaysLatest('MSFT');
-  console.log(ter);
+async function fetchApi(symbol = 'MSFT') {
+  var per = await yesterdaysClosing(symbol);
+  var ter = await todaysLatest(symbol);
+  var ser = await getCompanyDetails(symbol);
+  var result = {
+    'stock_name': per['stock_name'],
+    'stock_tag': per['stock_tag'],
+    'yest_price': per['yest_price'],
+    'curr_price': ter['curr_price'],
+    'curr_date': ter['curr_date'],
+    'curr_time': ter['curr_time'],
+    'market_cap': ser['market_cap'],
+    ['total_available']: ser['total_available']
+  }
+  console.log(result);
+  return result;
 }
-printer();
+
+//
+//printer();
+//con
