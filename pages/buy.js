@@ -1,12 +1,11 @@
 import Navbar from 'components/common/Navbar'
-import React, { useEffect } from 'react'
-import { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import styles from '../components/buy.module.css'
 
 export default function BuyPage() {
-	const [openFaq, setOpenFaq] = useState('')
+	const [openTab, setopenTab] = useState('')
 	const quantity = useRef(null)
 	const total = useRef(null)
 	// const data = [
@@ -37,7 +36,7 @@ export default function BuyPage() {
 			<Navbar>
 				<div className={styles['balance-container']}>
 					<div className={styles['balance-wrapper']}>
-						Your balance
+						Your Balance
 						<div className={styles['money-wrapper']}>
 							$10,000
 							<img src='/arrow-right.svg' />
@@ -49,11 +48,11 @@ export default function BuyPage() {
 						<div className={styles['stock-wrapper']} key={item.stock_tag}>
 							<div
 								className={`${styles['stock-top-wrapper']}  ${
-									openFaq == item.stock_tag ? styles['show'] : ''
+									openTab == item.stock_tag ? styles['show'] : ''
 								}`}
 								onClick={() => {
-									if (openFaq == item.stock_tag) setOpenFaq('')
-									else setOpenFaq(item.stock_tag)
+									if (openTab == item.stock_tag) setopenTab('')
+									else setopenTab(item.stock_tag)
 								}}
 							>
 								<div className={styles['stock-name-wrapper']}>
@@ -99,8 +98,8 @@ export default function BuyPage() {
 									height: 0,
 								}}
 								animate={{
-									opacity: openFaq == item.tag ? 1 : 0,
-									height: openFaq == item.tag ? 'auto' : 0,
+									opacity: openTab == item.stock_tag ? 1 : 0,
+									height: openTab == item.stock_tag ? 'auto' : 0,
 								}}
 							>
 								<div className={styles['stock-bottom-left']}>
@@ -108,19 +107,14 @@ export default function BuyPage() {
 										<div className={styles['input-wrapper']}>
 											<label>Quantity</label>
 											<input
-												id={item.tag}
+												id={item.stock_tag}
 												ref={quantity}
 												placeholder='Enter number of shares'
 												type='number'
 												min={0}
 											/>
 										</div>
-										<img
-											src='/refresh.svg'
-											onClick={() => {
-												total.current.innerHTML = quantity.current.value * item.price
-											}}
-										/>
+										<img src='/refresh.svg' onClick={() => {}} />
 									</div>
 									<div className={styles['total-wrapper']}>
 										Total
@@ -128,12 +122,7 @@ export default function BuyPage() {
 									</div>
 								</div>
 
-								<div
-									className={styles['buy-btn']}
-									onClick={() => {
-										total.current.innerHTML = quantity.current.value * item.price
-									}}
-								>
+								<div className={styles['buy-btn']} onClick={() => {}}>
 									<span>Buy</span>
 									<img src='/arrow-right.svg' />
 								</div>
