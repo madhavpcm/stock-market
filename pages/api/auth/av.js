@@ -1,0 +1,1 @@
+export default process.env.AV_API_KEY;
