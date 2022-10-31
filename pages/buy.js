@@ -47,9 +47,8 @@ export default function BuyPage() {
 					{dataResponse.map((item) => (
 						<div className={styles['stock-wrapper']} key={item.stock_tag}>
 							<div
-								className={`${styles['stock-top-wrapper']}  ${
-									openTab == item.stock_tag ? styles['show'] : ''
-								}`}
+								className={`${styles['stock-top-wrapper']}  ${openTab == item.stock_tag ? styles['show'] : ''
+									}`}
 								onClick={() => {
 									if (openTab == item.stock_tag) setopenTab('')
 									else setopenTab(item.stock_tag)
@@ -102,27 +101,29 @@ export default function BuyPage() {
 									height: openTab == item.stock_tag ? 'auto' : 0,
 								}}
 							>
-								<div className={styles['stock-bottom-left']}>
-									<div className={styles['input-container']}>
-										<div className={styles['input-wrapper']}>
-											<label>Quantity</label>
-											<input
-												id={item.stock_tag}
-												ref={quantity}
-												placeholder='Enter number of shares'
-												type='number'
-												min={0}
-											/>
-										</div>
-										<img src='/refresh.svg' onClick={() => {}} />
+								<div className={styles['input-container']}>
+									<div className={styles['input-wrapper']}>
+										<label>Quantity</label>
+										<input
+											id={item.stock_tag}
+											ref={quantity}
+											placeholder='Enter number of shares'
+											type='number'
+											min={0}
+										/>
 									</div>
-									<div className={styles['total-wrapper']}>
-										Total
-										<span ref={total}>$0</span>
-									</div>
+									<img src='/refresh.svg' onClick={() => { }} />
+								</div>
+								<div className={styles['total-wrapper']}>
+									Total
+									<span ref={total}>$0</span>
+								</div>
+								<div className={styles['total-wrapper']}>
+									Total Shares Available
+									<span>{item.total_available}</span>
 								</div>
 
-								<div className={styles['buy-btn']} onClick={() => {}}>
+								<div className={styles['buy-btn']} onClick={() => { }}>
 									<span>Buy</span>
 									<img src='/arrow-right.svg' />
 								</div>
