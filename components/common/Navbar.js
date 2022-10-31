@@ -29,16 +29,22 @@ export default function Navbar({ children }) {
 							<span>Sell</span>
 						</div>
 					</Link>
-					<Link href='/leaderboard'>
-						<div className={styles['left-link']}>
-							<img src='/cash.svg' />
-							<span>Leaderboard</span>
-						</div>
-					</Link>
 					<Link href='/portfolio'>
 						<div className={styles['left-link']}>
 							<img src='/cash.svg' />
 							<span>Portfolio</span>
+						</div>
+					</Link>
+					<Link href='/transactions'>
+						<div className={styles['left-link']}>
+							<img src='/cash.svg' />
+							<span>Transactions</span>
+						</div>
+					</Link>
+					<Link href='/leaderboard'>
+						<div className={styles['left-link']}>
+							<img src='/cash.svg' />
+							<span>Leaderboard</span>
 						</div>
 					</Link>
 				</div>
