@@ -1,10 +1,10 @@
 import Navbar from 'components/common/Navbar'
-import React, { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import React, { useEffect, useState, useRef } from 'react'
 
 import styles from '../components/buy.module.css'
 
-export default function SellPage() {
+export default function PortfolioPage() {
 	const [openTab, setopenTab] = useState('')
 	const quantity = useRef(null)
 	const total = useRef(null)
@@ -30,6 +30,7 @@ export default function SellPage() {
 		if (item.yest_price > item.curr_price) return 0
 		return 1
 	}
+
 	return (
 		<div className={styles['container']}>
 			<Navbar>
@@ -39,6 +40,20 @@ export default function SellPage() {
 						<div className={styles['money-wrapper']}>
 							$10,000
 							<img src='/arrow-right.svg' />
+						</div>
+					</div>
+					<div className={styles['balance-wrapper']}>
+						Net Worth
+						<div className={styles['money-wrapper']}>
+							$10,000
+							<img src='/arrow-right.svg' />
+						</div>
+					</div>
+					<div className={styles['turnover-wrapper']}>
+						Your Turnover
+						<div className={styles['turnover']}>
+							+$2,782.21
+							{/* <img src='/arrow-right.svg' /> */}
 						</div>
 					</div>
 				</div>
@@ -58,8 +73,8 @@ export default function SellPage() {
 									{item.stock_name}
 									<span>{item.stock_tag}</span>
 								</div>
-								<div className={styles['stock-value']}>${item.curr_price}</div>
-								{calcInc(item) == 0 && (
+								<div className={styles['stock-value']}>56</div>
+								{/* {calcInc(item) == 0 && (
 									<div className={styles['stock-percentage-wrapper']}>
 										<img src='/red-arrow.svg' />
 										<span className={styles['stock-percentage-dec']}>
@@ -74,23 +89,12 @@ export default function SellPage() {
 											%{(item.curr_price - item.yest_price) / 100}
 										</span>
 									</div>
-								)}
-								{/* {item.inc && (
-							<div className={styles['stock-percentage-wrapper']}>
-								<img src='/green-arrow.svg' />
-								<span className={styles['stock-percentage-inc']}>%{item.inc}</span>
+								)} */}
+								<div className={styles['stock-value']}>$37,576</div>
+								<div className={styles['stock-turnover']}>+$1,528</div>
+								{/* <img src='/arrow-down.svg' /> */}
 							</div>
-						)} */}
-								{/* {item.dec && (
-							<div className={styles['stock-percentage-wrapper']}>
-								<img src='/red-arrow.svg' />
-								<span className={styles['stock-percentage-dec']}>%{item.dec}</span>
-							</div>
-						)} */}
-								<div className={styles['stock-value']}>${item.market_cap}</div>
-								<img src='/arrow-down.svg' />
-							</div>
-							<motion.div
+							{/* <motion.div
 								className={styles['stock-bottom-wrapper']}
 								initial={{
 									opacity: 0,
@@ -122,10 +126,10 @@ export default function SellPage() {
 								</div>
 
 								<div className={styles['buy-btn']} onClick={() => {}}>
-									<span>Sell</span>
+									<span>Buy</span>
 									<img src='/arrow-right.svg' />
 								</div>
-							</motion.div>
+							</motion.div> */}
 						</div>
 					))}
 				</div>
