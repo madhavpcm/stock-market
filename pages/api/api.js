@@ -98,6 +98,7 @@ function fetchNewData(symbol) {
 
 async function printer() {
   var ter = await fetchNewData('MSFT');
+  console.log(ter);
 }
 
 printer();
