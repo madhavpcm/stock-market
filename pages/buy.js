@@ -47,9 +47,8 @@ export default function BuyPage() {
 					{dataResponse.map((item) => (
 						<div className={styles['stock-wrapper']} key={item.stock_tag}>
 							<div
-								className={`${styles['stock-top-wrapper']}  ${
-									openTab == item.stock_tag ? styles['show'] : ''
-								}`}
+								className={`${styles['stock-top-wrapper']}  ${openTab == item.stock_tag ? styles['show'] : ''
+									}`}
 								onClick={() => {
 									if (openTab == item.stock_tag) setopenTab('')
 									else setopenTab(item.stock_tag)
@@ -114,7 +113,7 @@ export default function BuyPage() {
 												min={0}
 											/>
 										</div>
-										<img src='/refresh.svg' onClick={() => {}} />
+										<img src='/refresh.svg' onClick={() => { }} />
 									</div>
 									<div className={styles['total-wrapper']}>
 										Total
@@ -122,7 +121,7 @@ export default function BuyPage() {
 									</div>
 								</div>
 
-								<div className={styles['buy-btn']} onClick={() => {}}>
+								<div className={styles['buy-btn']} onClick={() => { }}>
 									<span>Buy</span>
 									<img src='/arrow-right.svg' />
 								</div>
